@@ -34,7 +34,7 @@ Asegúrate de tener instalado Java JDK 11 o superior.
    ```bash
    java -jar Evidencia.jar
 
-##Uso del Programa
+## Uso del Programa
 -Iniciar Sesión de Administrador: Permite iniciar sesión como administrador para acceder a las funciones de administración.
 
 -Registrar Médico: Permite dar de alta un nuevo médico con su identificador único, nombre completo y especialidad.
@@ -51,7 +51,7 @@ Asegúrate de tener instalado Java JDK 11 o superior.
 
 -Salir: Sale del programa.
 
-##Creditos
+## Creditos
 Autor: Andrés Eduardo Vázquez Pérez
 Matricula: AL03065873
 Universidad: Tec Milenio
