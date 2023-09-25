@@ -52,9 +52,9 @@ Asegúrate de tener instalado Java JDK 11 o superior.
 -Salir: Sale del programa.
 
 ## Creditos
-Autor: Andrés Eduardo Vázquez Pérez
-Matricula: AL03065873
-Universidad: Tec Milenio
+Autor: Andrés Eduardo Vázquez Pérez.
+Matricula: AL03065873.
+Universidad: Tec Milenio.
 
 ## Licencia
 Este proyecto está bajo la [GNU General Public License, Versión 3](LICENSE). Consulta el archivo [LICENSE](LICENSE) para obtener más información sobre los términos y condiciones de la licencia.
