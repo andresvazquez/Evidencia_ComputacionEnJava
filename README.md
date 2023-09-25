@@ -16,19 +16,23 @@ Asegúrate de tener instalado Java JDK 11 o superior.
 
 2. Abre la terminal y navega hasta la carpeta del proyecto:
 
-cd Evidencia_ComputacionEnJava
+   ```bash
+   cd Evidencia_ComputacionEnJava
 
 3. Compila el programa:
 
-javac -cp . Main.java
+   ```bash
+   javac -cp . Main.java
 
 4. Empaqueta el programa en un FAT JAR (incluyendo las dependencias):
 
-jar cfm Evidencia.jar MANIFEST.MF *.class
+    ```bash
+   jar cfm Evidencia.jar MANIFEST.MF *.class
 
-5. Ejecuta el programa:
+7. Ejecuta el programa:
 
-java -jar Evidencia.jar
+   ```bash
+   java -jar Evidencia.jar
 
 ##Uso del Programa
 -Iniciar Sesión de Administrador: Permite iniciar sesión como administrador para acceder a las funciones de administración.
