@@ -12,7 +12,7 @@ Para ejecutar este programa, sigue estos pasos:
    ```bash
    git clone https://github.com/andresvazquez/Evidencia_ComputacionEnJava.git
 
-   Asegúrate de tener instalado Java JDK 11 o superior.
+Asegúrate de tener instalado Java JDK 11 o superior.
 
 2. Abre la terminal y navega hasta la carpeta del proyecto:
 
