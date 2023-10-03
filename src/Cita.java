@@ -11,8 +11,9 @@ public class Cita {
         this.fechaHora= LocalDateTime.now();
     }
 
-    public Cita(int idCita, LocalDateTime fechaHora){
+    public Cita(int idCita, String motivo, LocalDateTime fechaHora){
         this.idCita=idCita;
+        this.motivo =motivo;
         this.fechaHora = fechaHora;
     }
 
