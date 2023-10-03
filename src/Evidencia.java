@@ -44,6 +44,7 @@ public class Evidencia {
             writerPaciente.newLine();
         }
         writerPaciente.close();
+        System.out.println("Se realiza el guardado con éxito.");
     }
 
     public void cargarDatosDesdeArchivos() throws IOException {
@@ -84,50 +85,87 @@ public class Evidencia {
 
     public static void main(String[] args) {
         boolean exit=false;
+        Evidencia ev = new Evidencia();
         while(!exit) {
-            System.out.println("Menú Principal\n" +
-                    "1. Iniciar Sesión de Administrador\n" +
-                    "2. Registrar Doctor\n" +
-                    "3. Registrar Paciente\n" +
-                    "4. Crear Cita\n" +
-                    "5. Mostrar Citas por Doctor\n" +
-                    "6. Mostrar Citas por Paciente\n" +
-                    "7. Cerrar Sesión de Administrador\n" +
-                    "8. Salir\n");
-            Evidencia ev = new Evidencia();
+            if(ev.sesionIniciada) {
+                System.out.println("Menú Principal\n" +
+                        "1. Iniciar Sesión de Administrador\n" +
+                        "2. Registrar Doctor\n" +
+                        "3. Registrar Paciente\n" +
+                        "4. Crear Cita\n" +
+                        "5. Mostrar Citas por Doctor\n" +
+                        "6. Mostrar Citas por Paciente\n" +
+                        "7. Cerrar Sesión de Administrador\n" +
+                        "8. Salir\n");
+            }else{
+                System.out.println("Menú Principal\n" +
+                        "1. Iniciar Sesión de Administrador\n" +
+                        "8. Salir\n");
+            }
             System.out.print("Seleccione una opción:");
             Scanner scanner = new Scanner(System.in);
             int choice = scanner.nextInt();
             scanner.nextLine();
-            switch (choice) {
-                case 1:
-                    System.out.print("Ingrese el id del usuario administrador:");
-                    int idUsuario = scanner.nextInt();
-                    System.out.print("Ingrese la contraseña:");
-                    String contrasena = scanner.next();
-                    try {
-                        ev.sesionIniciada = new Usuario().iniciarSesionAdministrador(idUsuario, contrasena);
-                    } catch (IOException e) {
-                        System.out.println("Se obtuvo un error al leer la db de administradores: " + e);
-                    }
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    exit=true;
-                    break;
-                default:
+            if((choice!= 1 && choice!=8) && !ev.sesionIniciada){
+                System.out.println("Se requiere iniciar sesión primero antes de poder acceder a otras opciones.");
+            }else{
+                switch (choice) {
+                    case 1:
+                        if(ev.sesionIniciada){
+                            System.out.println("La sesión está iniciada, ¿Deseas cambiar de usuario? Y/N");
+                            String respuesta = scanner.nextLine();
+                            if(respuesta.toUpperCase().equals("Y")){
+                                ev.sesionIniciada=false;
+                            }else{
+                                break;
+                            }
+                        }
+                        if(!ev.sesionIniciada) {
+                            System.out.print("Ingrese el id del usuario administrador:");
+                            int idUsuario = scanner.nextInt();
+                            scanner.nextLine();
+                            System.out.print("Ingrese la contraseña:");
+                            String contrasena = scanner.nextLine();
+                            try {
+                                ev.sesionIniciada = new Usuario().iniciarSesionAdministrador(idUsuario, contrasena);
+                            } catch (IOException e) {
+                                System.out.println("Se obtuvo un error al leer la db de administradores: " + e);
+                            }
+                        }
+                        break;
+                    case 2:
+                        System.out.print("Ingrese el id del usuario del doctor a crear:");
+                        int idUsuario = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.print("Ingrese el nombre del doctor a crear:");
+                        String nombre = scanner.nextLine();
+                        System.out.print("Ingrese la especialidad del doctor a crear:");
+                        String especialidad = scanner.nextLine();
+                        Doctor nuevodoctor = new Doctor(idUsuario,nombre,especialidad);
+                        ev.doctores = nuevodoctor.registrarDoctor(ev.doctores,nuevodoctor);
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        exit=true;
+                        break;
+                    default:
+                        System.out.println("La opción elegida no es valida, intente nuevamente.");
+                }
             }
+        }
+        try {
+            ev.guardarDatosEnArchivos();
+        } catch (IOException e) {
+            System.out.println("Error al guardar en archivos: " + e);
         }
     }
 }

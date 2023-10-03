@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Doctor extends Usuario {
     private String especialidad;
 
@@ -10,8 +13,16 @@ public class Doctor extends Usuario {
         this.especialidad=especialidad;
     }
 
-    public void registrarDoctor(){
-
+    public ArrayList<Doctor> registrarDoctor(ArrayList<Doctor> doctores, Doctor doctorToRegister){
+        for(Doctor doc : doctores){
+            if(doc.getIdUsuario()==doctorToRegister.getIdUsuario()){
+                System.out.println("Este ID ya existe, no es posible registrar doctor duplicado.\n");
+                return doctores;
+            }
+        }
+        doctores.add(doctorToRegister);
+        System.out.format("Se ha creado con éxito el doctor id:%s, nombre:%s, especialidad:%s.\n",doctorToRegister.getIdUsuario(),doctorToRegister.getNombre(),doctorToRegister.getEspecialidad());
+        return doctores;
     }
 
     public String getEspecialidad() {
