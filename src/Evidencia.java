@@ -88,7 +88,7 @@ public class Evidencia {
         Evidencia ev = new Evidencia();
         while(!exit) {
             if(ev.sesionIniciada) {
-                System.out.println("Menú Principal\n" +
+                System.out.println("\nMenú Principal\n" +
                         "1. Iniciar Sesión de Administrador\n" +
                         "2. Registrar Doctor\n" +
                         "3. Registrar Paciente\n" +
@@ -134,17 +134,24 @@ public class Evidencia {
                         }
                         break;
                     case 2:
-                        System.out.print("Ingrese el id del usuario del doctor a crear:");
+                        System.out.print("Ingrese el id del usuario del doctor a registrar:");
                         int idUsuario = scanner.nextInt();
                         scanner.nextLine();
-                        System.out.print("Ingrese el nombre del doctor a crear:");
+                        System.out.print("Ingrese el nombre del doctor a registrar:");
                         String nombre = scanner.nextLine();
-                        System.out.print("Ingrese la especialidad del doctor a crear:");
+                        System.out.print("Ingrese la especialidad del doctor a registrar:");
                         String especialidad = scanner.nextLine();
                         Doctor nuevodoctor = new Doctor(idUsuario,nombre,especialidad);
                         ev.doctores = nuevodoctor.registrarDoctor(ev.doctores,nuevodoctor);
                         break;
                     case 3:
+                        System.out.print("Ingrese el id del paciente a registrar:");
+                        idUsuario = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.print("Ingrese el nombre del paciente a registrar:");
+                        nombre = scanner.nextLine();
+                        Paciente nuevopaciente = new Paciente(idUsuario,nombre);
+                        ev.pacientes = nuevopaciente.registrarPaciente(ev.pacientes,nuevopaciente);
                         break;
                     case 4:
                         break;

@@ -21,7 +21,7 @@ public class Doctor extends Usuario {
             }
         }
         doctores.add(doctorToRegister);
-        System.out.format("Se ha creado con éxito el doctor id:%s, nombre:%s, especialidad:%s.\n",doctorToRegister.getIdUsuario(),doctorToRegister.getNombre(),doctorToRegister.getEspecialidad());
+        System.out.format("Se ha registrado con éxito el doctor id:%s, nombre:%s, especialidad:%s.\n",doctorToRegister.getIdUsuario(),doctorToRegister.getNombre(),doctorToRegister.getEspecialidad());
         return doctores;
     }
 
