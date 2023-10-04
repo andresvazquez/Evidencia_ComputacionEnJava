@@ -22,7 +22,7 @@ Asegúrate de tener instalado Java JDK 11 o superior.
 3. Compila el programa:
 
    ```bash
-   javac -cp . Main.java
+   javac -cp . Evidencia.java
 
 4. Empaqueta el programa en un FAT JAR (incluyendo las dependencias):
 
