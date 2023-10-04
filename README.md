@@ -3,7 +3,7 @@ Evidencia del curso Computación en Java
 
 Este proyecto es una aplicación de administración de citas médicas para un consultorio clínico, desarrollado por Andrés Eduardo Vázquez Pérez (Matrícula: AL03065873).
 
-##Instalación y configuración
+## Instalación y configuración
 
 Abre tu terminal.
 
