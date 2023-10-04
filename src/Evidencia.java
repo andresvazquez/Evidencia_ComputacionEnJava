@@ -144,7 +144,18 @@ public class Evidencia {
         }
     }
 
+    public void Salir(){
+        System.out.println("Saliendo del programa...");
+        try {
+            guardarDatosEnArchivos();
+        } catch (IOException e) {
+            System.out.println("Error al guardar en archivos: " + e);
+        }
+    }
 
+    public void CerrarSesion(){
+        this.sesionIniciada=false;
+    }
     public static void main(String[] args) {
         boolean exit=false;
         Evidencia ev = new Evidencia();
@@ -379,19 +390,16 @@ public class Evidencia {
                         ev.mostrarCitasPorPaciente(idPac);
                         break;
                     case 7:
+                        ev.CerrarSesion();
                         break;
                     case 8:
                         exit=true;
+                        ev.Salir();
                         break;
                     default:
                         System.out.println("La opción elegida no es valida, intente nuevamente.");
                 }
             }
-        }
-        try {
-            ev.guardarDatosEnArchivos();
-        } catch (IOException e) {
-            System.out.println("Error al guardar en archivos: " + e);
         }
     }
 }
