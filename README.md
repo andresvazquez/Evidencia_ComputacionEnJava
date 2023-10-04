@@ -3,37 +3,6 @@ Evidencia del curso Computación en Java
 
 Este proyecto es una aplicación de administración de citas médicas para un consultorio clínico, desarrollado por Andrés Eduardo Vázquez Pérez (Matrícula: AL03065873).
 
-## Instalación y Configuración
-
-Para ejecutar este programa, sigue estos pasos:
-
-1. Clona este repositorio en tu máquina local:
-
-   ```bash
-   git clone https://github.com/andresvazquez/Evidencia_ComputacionEnJava.git
-
-Asegúrate de tener instalado Java JDK 11 o superior.
-
-2. Abre la terminal y navega hasta la carpeta del proyecto:
-
-   ```bash
-   cd Evidencia_ComputacionEnJava
-
-3. Compila el programa:
-
-   ```bash
-   javac -cp . Evidencia.java
-
-4. Empaqueta el programa en un FAT JAR (incluyendo las dependencias):
-
-    ```bash
-   jar cfm Evidencia.jar MANIFEST.MF *.class
-
-7. Ejecuta el programa:
-
-   ```bash
-   java -jar Evidencia.jar
-
 ## Uso del Programa
 -Iniciar Sesión de Administrador: Permite iniciar sesión como administrador para acceder a las funciones de administración.
 
