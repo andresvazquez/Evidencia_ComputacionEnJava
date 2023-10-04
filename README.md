@@ -3,6 +3,18 @@ Evidencia del curso Computación en Java
 
 Este proyecto es una aplicación de administración de citas médicas para un consultorio clínico, desarrollado por Andrés Eduardo Vázquez Pérez (Matrícula: AL03065873).
 
+##Instalación y configuración
+
+Abre tu terminal.
+
+Navega al directorio que contiene el archivo JAR usando el comando cd. Por ejemplo:
+
+cd /ruta/a/tu/directorio
+
+Una vez que estés en el directorio correcto, ejecuta el archivo JAR utilizando el comando java -jar seguido del nombre del archivo JAR. Por ejemplo:
+
+java -jar Evidencia_ComputacionEnJava_jar/Evidencia_ComputacionEnJava.jar
+
 ## Uso del Programa
 -Iniciar Sesión de Administrador: Permite iniciar sesión como administrador para acceder a las funciones de administración.
 
