@@ -1,10 +1,12 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Cita {
     private int idCita;
     private LocalDateTime fechaHora;
     private String motivo;
+    private int idDoc, idPac;
 
     public Cita(){
         this.idCita=-1;
@@ -17,14 +19,23 @@ public class Cita {
         this.fechaHora = fechaHora;
     }
 
-    public void mostrarCitasPorDoctor(){
-
+    public Cita(int idCita, String motivo, LocalDateTime fechaHora,int idDoc, int idPac){
+        this.idCita=idCita;
+        this.motivo =motivo;
+        this.fechaHora = fechaHora;
+        this.idDoc = idDoc;
+        this.idPac = idPac;
     }
-    public void mostrarCitasPorPaciente(){
 
-    }
-    public void crearCita(){
-
+    public void crearCita(Doctor doctorCita, Paciente pacienteCita){
+        if(doctorCita==null){
+            this.idDoc=-1;
+            System.out.println("Cita sin doctor asignado.");
+        }
+        if(pacienteCita==null){
+            this.idPac=-1;
+            System.out.println("Cita sin paciente asignado.");
+        }
     }
 
     public int getIdCita() {
@@ -49,5 +60,21 @@ public class Cita {
 
     public void setMotivo(String motivo) {
         this.motivo = motivo;
+    }
+
+    public int getIdDoc() {
+        return idDoc;
+    }
+
+    public void setIdDoc(int idDoc) {
+        this.idDoc = idDoc;
+    }
+
+    public int getIdPac() {
+        return idPac;
+    }
+
+    public void setIdPac(int idPac) {
+        this.idPac = idPac;
     }
 }
