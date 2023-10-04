@@ -39,9 +39,6 @@ public class Usuario {
         System.out.println("El usuario y/o contraseña son incorrectos.");
         return false;
     }
-    public void cerrarSesion(){
-
-    }
 
     public int getIdUsuario() {
         return idUsuario;

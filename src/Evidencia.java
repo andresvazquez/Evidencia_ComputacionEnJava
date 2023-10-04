@@ -1,3 +1,4 @@
+import javax.print.Doc;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -113,33 +114,85 @@ public class Evidencia {
     }
 
     public void mostrarCitasPorDoctor(int idDoc){
-        int numcita=1;
-        for(Cita cita : citas){
-            if(idDoc==cita.getIdDoc()){
-                System.out.format("Citas del doctor %s:\n"
-                        + "Cita #%s\n"
-                        + "ID cita:%s\n"
-                        + "Motivo:%s\n"
-                        + "Fecha hora:%s\n"
-                        + "Paciente:%s\n"
-                ,buscarDoctorPorId(cita.getIdDoc()).getNombre(),numcita,cita.getIdCita(),cita.getMotivo(),cita.getFechaHora().toString(),buscarPacientePorId(cita.getIdPac()).getNombre());
-                numcita++;
+        Doctor doctor = buscarDoctorPorId(idDoc);
+        if(doctor==null){
+            System.out.println("El doctor a consultar no esta registrado.");
+        }
+        try {
+            System.out.println("\nCitas del doctor " + doctor.getNombre() + ":\n");
+            int numcita = 1;
+            for (Cita cita : this.citas) {
+                if (idDoc == cita.getIdDoc()) {
+                    System.out.format("*******************\n"
+                                    + "Cita #%s\n"
+                                    + "ID cita:%s\n"
+                                    + "Motivo:%s\n"
+                                    + "Fecha hora:%s\n"
+                                    + "Paciente:%s\n"
+                            ,numcita, cita.getIdCita(), cita.getMotivo(), cita.getFechaHora().toString(), buscarPacientePorId(cita.getIdPac()).getNombre());
+                    numcita++;
+                }
+            }
+        }catch (NullPointerException e){
+            System.out.println("Al no estar registrado el doctor no tiene nombre y es nulo, da error: " + e);
+            System.out.println("\nSe buscan capturas de citas manuales por archivo del doctor " + idDoc + ":\n");
+            int numcita = 1;
+            for (Cita cita : this.citas) {
+                if (idDoc == cita.getIdDoc()) {
+                    System.out.format("*******************\n"
+                                    + "Cita #%s\n"
+                                    + "ID cita:%s\n"
+                                    + "Motivo:%s\n"
+                                    + "Fecha hora:%s\n"
+                                    + "Paciente:%s\n"
+                            ,numcita, cita.getIdCita(), cita.getMotivo(), cita.getFechaHora().toString(), cita.getIdPac());
+                    numcita++;
+                }
+            }
+            if(numcita==1){
+                System.out.println("No se encontraron citas registradas desde el archivo para id:"+idDoc);
             }
         }
     }
 
     public void mostrarCitasPorPaciente(int idPac){
-        int numcita=1;
-        for(Cita cita : citas){
-            if(idPac==cita.getIdPac()){
-                System.out.format("Citas del paciente %s:\n"
-                                + "Cita #%s\n"
-                                + "ID cita:%s\n"
-                                + "Motivo:%s\n"
-                                + "Fecha hora:%s\n"
-                                + "Paciente:%s\n"
-                        ,buscarPacientePorId(cita.getIdPac()).getNombre(),numcita,cita.getIdCita(),cita.getMotivo(),cita.getFechaHora().toString(),buscarDoctorPorId(cita.getIdDoc()).getNombre());
-                numcita++;
+        Paciente paciente = buscarPacientePorId(idPac);
+        if(paciente==null){
+            System.out.println("El paciente a consultar no esta registrado.");
+        }
+        try {
+            System.out.println("\nCitas del paciente " + paciente.getNombre() + ":\n");
+            int numcita = 1;
+            for (Cita cita : this.citas) {
+                if (idPac == cita.getIdPac()) {
+                    System.out.format("*******************\n"
+                                    + "Cita #%s\n"
+                                    + "ID cita:%s\n"
+                                    + "Motivo:%s\n"
+                                    + "Fecha hora:%s\n"
+                                    + "Doctor:%s\n"
+                            ,numcita, cita.getIdCita(), cita.getMotivo(), cita.getFechaHora().toString(), buscarDoctorPorId(cita.getIdDoc()).getNombre());
+                    numcita++;
+                }
+            }
+        }catch (NullPointerException e){
+            System.out.println("Al no estar registrado el paciente no tiene nombre y es nulo, por lo tanto da error: " + e);
+            System.out.println("\nSe buscan capturas de citas manuales por archivo del paciente " + idPac + ":\n");
+            int numcita = 1;
+            for (Cita cita : this.citas) {
+                if (idPac == cita.getIdPac()) {
+                    System.out.format("*******************\n"
+                                    + "Cita #%s\n"
+                                    + "ID cita:%s\n"
+                                    + "Motivo:%s\n"
+                                    + "Fecha hora:%s\n"
+                                    + "Doctor:%s\n"
+                            ,numcita, cita.getIdCita(), cita.getMotivo(), cita.getFechaHora().toString(), cita.getIdDoc());
+                    numcita++;
+                }
+            }
+            if(numcita==1){
+                System.out.println("No se encontraron citas registradas desde el archivo para id:"+idPac);
             }
         }
     }
@@ -169,7 +222,7 @@ public class Evidencia {
                         "5. Mostrar Citas por Doctor\n" +
                         "6. Mostrar Citas por Paciente\n" +
                         "7. Cerrar Sesión de Administrador\n" +
-                        "8. Salir\n");
+                        "8. Salir/Guardar\n");
             }else{
                 System.out.println("Menú Principal\n" +
                         "1. Iniciar Sesión de Administrador\n" +
