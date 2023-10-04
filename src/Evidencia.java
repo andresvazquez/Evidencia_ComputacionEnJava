@@ -432,7 +432,7 @@ public class Evidencia {
                         ev.mostrarCitasPorDoctor(idDoc);
                         break;
                     case 6:
-                        System.out.print("Ingrese el id del pacienta a consultar sus citas:");
+                        System.out.print("Ingrese el id del paciente a consultar sus citas:");
                         idPac=0;
                         try{
                             idPac = scanner.nextInt();
