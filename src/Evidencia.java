@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Evidencia {
@@ -123,14 +122,26 @@ public class Evidencia {
                         + "Motivo:%s\n"
                         + "Fecha hora:%s\n"
                         + "Paciente:%s\n"
-                ,numcita,buscarDoctorPorId(cita.getIdDoc()).getNombre(),cita.getIdCita(),cita.getMotivo(),cita.getFechaHora().toString(),buscarPacientePorId(cita.getIdPac()).getNombre());
+                ,buscarDoctorPorId(cita.getIdDoc()).getNombre(),numcita,cita.getIdCita(),cita.getMotivo(),cita.getFechaHora().toString(),buscarPacientePorId(cita.getIdPac()).getNombre());
                 numcita++;
             }
         }
     }
 
-    public void mostrarCitasPorPaciente(){
-
+    public void mostrarCitasPorPaciente(int idPac){
+        int numcita=1;
+        for(Cita cita : citas){
+            if(idPac==cita.getIdPac()){
+                System.out.format("Citas del paciente %s:\n"
+                                + "Cita #%s\n"
+                                + "ID cita:%s\n"
+                                + "Motivo:%s\n"
+                                + "Fecha hora:%s\n"
+                                + "Paciente:%s\n"
+                        ,buscarPacientePorId(cita.getIdPac()).getNombre(),numcita,cita.getIdCita(),cita.getMotivo(),cita.getFechaHora().toString(),buscarDoctorPorId(cita.getIdDoc()).getNombre());
+                numcita++;
+            }
+        }
     }
 
 
@@ -357,6 +368,15 @@ public class Evidencia {
                         ev.mostrarCitasPorDoctor(idDoc);
                         break;
                     case 6:
+                        System.out.print("Ingrese el id del pacienta a consultar sus citas:");
+                        idPac=0;
+                        try{
+                            idPac = scanner.nextInt();
+                        }catch (InputMismatchException e){
+                            System.out.println("Se ingreso un caracter invalido en vez del id númerico:" +e);
+                            break;
+                        }
+                        ev.mostrarCitasPorPaciente(idPac);
                         break;
                     case 7:
                         break;
