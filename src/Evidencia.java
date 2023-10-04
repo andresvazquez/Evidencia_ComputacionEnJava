@@ -1,9 +1,5 @@
 import javax.print.Doc;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -20,12 +16,37 @@ public class Evidencia {
         this.citas =new ArrayList<Cita>();
         this.sesionIniciada=false;
         try {
+            validaArchivos();
             cargarDatosDesdeArchivos();
         } catch (IOException e) {
             System.out.println("Error IO: " + e);
         }
     }
 
+    public void validaArchivos() throws IOException{
+        String directorio = "db/";
+        String[] nombresArchivos = {"administradores.csv", "citas.csv", "doctores.csv", "pacientes.csv"};
+        File dir = new File(directorio);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        for (String nombreArchivo : nombresArchivos) {
+            File archivo = new File(directorio + nombreArchivo);
+            if (!archivo.exists()) {
+                try {
+                    archivo.createNewFile();
+                    System.out.println("Se creó el archivo: " + nombreArchivo);
+                    if(nombreArchivo.equals("administradores.csv")){
+                        BufferedWriter writer = new BufferedWriter(new FileWriter(directorio + nombreArchivo));
+                        writer.append("0923,pollito25\n");
+                        writer.close();
+                    }
+                } catch (IOException e) {
+                    System.err.println("Error al crear el archivo: " + nombreArchivo + " :" + e);
+                }
+            }
+        }
+    }
     public void guardarDatosEnArchivos() throws IOException {
         BufferedWriter writerDoc = new BufferedWriter(new FileWriter("db/doctores.csv"));
         for (Doctor doctor : this.doctores) {
